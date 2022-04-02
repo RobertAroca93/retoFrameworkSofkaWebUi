@@ -25,9 +25,9 @@ public class ShoppingCartWebController {
             webAction.click(shoppingCartPage.getProceedToCheckout(),5,true);
             webAction.click(shoppingCartPage.getProceedToCheckout_Singin(),5,true);
             webAction.click(shoppingCartPage.getProceedToCheckout_Adress(),4,true);
-
             webAction.click(shoppingCartPage.getAcept_Termns(), 5,true);
             webAction.click(shoppingCartPage.getProceedToCheckout_Payment(),5,true);
+
             webAction.click(shoppingCartPage.getPay_By_BankWire(),4,true);
             webAction.click(shoppingCartPage.getBankWire_Confirmation_Button(),4,true);
             text = webAction.getText(shoppingCartPage.getOrderBankWire_Confirmation(),4,true);
@@ -38,7 +38,28 @@ public class ShoppingCartWebController {
         }
 
     }
+    public void ShoppingCartPayCheck(){
 
+        try {
+            ShoppingCartPage shoppingCartPage = new ShoppingCartPage((webAction.getDriver()));
+            webAction.click(shoppingCartPage.getDresses(), 5,true);
+            webAction.moveTo(shoppingCartPage.getPrinted_Dress(),5,true);
+            webAction.click(shoppingCartPage.getAddToCart_Button(),5,true);
+            webAction.click(shoppingCartPage.getProceedToCheckout(),5,true);
+            webAction.click(shoppingCartPage.getProceedToCheckout_Singin(),5,true);
+            webAction.click(shoppingCartPage.getProceedToCheckout_Adress(),4,true);
+            webAction.click(shoppingCartPage.getAcept_Termns(), 5,true);
+            webAction.click(shoppingCartPage.getProceedToCheckout_Payment(),5,true);
+
+            webAction.click(shoppingCartPage.getPay_By_Check(), 5,true);
+            webAction.click(shoppingCartPage.getCheckPayment_Confirmation_Button(),5,true);
+            webAction.click(shoppingCartPage.getOrderCheck_Confirmation(),4,true);
+
+        }catch (WebActionsException e){
+            Report.reportFailure("an error occurred while making the transfer", e);
+
+        }
+    }
 
 
 }

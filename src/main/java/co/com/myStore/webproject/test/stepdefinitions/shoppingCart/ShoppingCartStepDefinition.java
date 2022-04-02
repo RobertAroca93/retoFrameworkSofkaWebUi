@@ -18,6 +18,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static co.com.myStore.webproject.test.helpers.Dictionary.BANKWIRE_SUCCESSFUL;
+import static co.com.myStore.webproject.test.helpers.Dictionary.CHECKPAYMENT_SUCCESSFUL;
 
 
 public class ShoppingCartStepDefinition extends Setup {
@@ -85,4 +86,43 @@ public class ShoppingCartStepDefinition extends Setup {
 
 
     }
+
+
+    @Given("I am making a purchase")
+    public void i_am_making_a_purchase() {
+        StartBrowserWebController startBrowserWebController = new StartBrowserWebController();
+        startBrowserWebController.setWebAction(webAction);
+        startBrowserWebController.setBrowser(browser());
+        startBrowserWebController.setFeature(testInfo.getFeatureName());
+        startBrowserWebController.openStoreOnline();
+
+
+    }
+
+    @When("I choose payment by check")
+    public void i_choose_payment_by_check() {
+        LoginPageController loginPageController = new LoginPageController();
+        loginPageController.setWebAction(webAction);
+        loginPageController.goToLoginPage();
+
+        CreateAnAccountWebController createAnAccountWebController = new CreateAnAccountWebController();
+        createAnAccountWebController.setWebAction(webAction);
+        createAnAccountWebController.createAnAccount();
+        customer = createAnAccountWebController.getCustomer();
+
+
+        ShoppingCartWebController shoppingCartWebController = new ShoppingCartWebController();
+        shoppingCartWebController.setWebAction(webAction);
+        shoppingCartWebController.shoppingCartBankWire();
+        message = shoppingCartWebController.text;
+
+    }
+
+    @Then("the system should allow successful purchase")
+    public void the_system_should_allow_successful_purchase() {
+        Assert.Hard.thatString(message).isEqualTo(CHECKPAYMENT_SUCCESSFUL);
+
+
+    }
+
 }

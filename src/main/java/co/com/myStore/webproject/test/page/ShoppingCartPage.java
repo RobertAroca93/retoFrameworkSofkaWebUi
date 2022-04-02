@@ -57,6 +57,19 @@ public class ShoppingCartPage {
     WebElement OrderBankWire_Confirmation;
 
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"HOOK_PAYMENT\"]/div[2]/div/p/a")
+    WebElement Pay_By_Check;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"cart_navigation\"]/button/span")
+    WebElement CheckPayment_Confirmation_Button;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"center_column\"]/div/h3")
+    WebElement OrderCheck_Confirmation;
+
+
     public WebElement getDresses() {
         return Dresses;
     }
@@ -103,6 +116,18 @@ public class ShoppingCartPage {
 
     public WebElement getOrderBankWire_Confirmation() {
         return OrderBankWire_Confirmation;
+    }
+
+    public WebElement getPay_By_Check() {
+        return Pay_By_Check;
+    }
+
+    public WebElement getCheckPayment_Confirmation_Button() {
+        return CheckPayment_Confirmation_Button;
+    }
+
+    public WebElement getOrderCheck_Confirmation() {
+        return OrderCheck_Confirmation;
     }
 
     public ShoppingCartPage(WebDriver webDriver){

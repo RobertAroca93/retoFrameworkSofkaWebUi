@@ -6,6 +6,7 @@ public class Dictionary {
     public static final String EMPTY_STRING = "";
     public static final String SPACE_STRING = " ";
     public static final String BANKWIRE_SUCCESSFUL = "Your order on My Store is complete.";
+    public static final String CHECKPAYMENT_SUCCESSFUL="Your order on My Store is complete.";
 
     public static final String SPANISH_CODE_LANGUAGE = "es";
     public static final String COUNTRY_CODE = "CO";
