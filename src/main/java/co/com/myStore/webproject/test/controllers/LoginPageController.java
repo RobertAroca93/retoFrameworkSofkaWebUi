@@ -12,7 +12,7 @@ public class LoginPageController {
         this.webAction = webAction;
     }
 
-    public void irHaciaLoginPage(){
+    public void goToLoginPage(){
         try{
             LandingPage landingPage = new LandingPage(webAction.getDriver());
 

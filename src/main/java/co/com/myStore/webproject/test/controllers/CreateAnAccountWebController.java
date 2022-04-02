@@ -20,7 +20,7 @@ public class CreateAnAccountWebController {
         this.webAction = webAction;
     }
 
-    public void crearUnaCuenta(){
+    public void createAnAccount(){
         try{
             customer = Helper.generateCustomer(Dictionary.SPANISH_CODE_LANGUAGE, Dictionary.COUNTRY_CODE, Dictionary.EMAIL_DOMAIN);
 

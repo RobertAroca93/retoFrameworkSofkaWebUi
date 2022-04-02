@@ -1,4 +1,4 @@
-package co.com.myStore.webproject.test.stepdefinition;
+package co.com.myStore.webproject.test.stepdefinitions;
 
 import co.com.myStore.webproject.test.data.objects.TestInfo;
 import co.com.sofka.test.automationtools.selenium.Browser;

@@ -13,11 +13,12 @@ import co.com.sofka.test.evidence.reports.Report;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Dado;
-import io.cucumber.java.es.Entonces;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
-public class CrearNuevaCuentaStepsDefinition extends Setup{
+
+public class CreateAnAccountStepDefinition extends Setup{
 
     private WebAction webAction;
     private Customer customer;
@@ -29,32 +30,32 @@ public class CrearNuevaCuentaStepsDefinition extends Setup{
         webAction.setScenario(testInfo.getScenarioName());
     }
 
-    @Dado("que el cliente esta en la página de inicio")
-    public void queElClienteEstaEnLaPaginaDeInicio() {
+    @Given("that the client is on the registration page")
+    public void that_the_client_is_on_the_registration_page() {
         StartBrowserWebController startBrowserWebController = new StartBrowserWebController();
         startBrowserWebController.setWebAction(webAction);
         startBrowserWebController.setBrowser(browser());
         startBrowserWebController.setFeature(testInfo.getFeatureName());
-        startBrowserWebController.abrirTiendaOnline();
+        startBrowserWebController.openStoreOnline();
     }
 
-    @Cuando("el cliente registra sus datos para una cuenta en línea de forma exitosa")
-    public void elClienteRegistraSusDatosParaUnaCuentaEnLineaDeFormaExitosa() {
+    @When("the customer enters their data to create an online account")
+    public void the_customer_enters_their_data_to_create_an_online_account() {
         LoginPageController loginPageController = new LoginPageController();
         loginPageController.setWebAction(webAction);
-        loginPageController.irHaciaLoginPage();
+        loginPageController.goToLoginPage();
 
         CreateAnAccountWebController createAnAccountWebController = new CreateAnAccountWebController();
         createAnAccountWebController.setWebAction(webAction);
-        createAnAccountWebController.crearUnaCuenta();
+        createAnAccountWebController.createAnAccount();
         customer = createAnAccountWebController.getCustomer();
     }
 
-    @Entonces("como resultado el usuario quedará logueado dentro de su respectiva sesión per se.")
-    public void comoResultadoElUsuarioQuedaraLogueadoDentroDeSuRespectivaSesionPerSe() {
+    @Then("As a result, the user will be logged into their respective session.")
+    public void as_a_result_the_user_will_be_logged_into_their_respective_session() {
         MyAccountWebController myAccountWebController = new MyAccountWebController();
         myAccountWebController.setWebAction(webAction);
-        String userName = myAccountWebController.obtenerNombreDeNuevoUsuario();
+        String userName = myAccountWebController.getNewUserName();
 
         Assert
                 .Hard
@@ -63,14 +64,14 @@ public class CrearNuevaCuentaStepsDefinition extends Setup{
     }
 
     @After
-    public void cerrarDriver() throws InterruptedException {
+    public void closeDriver() throws InterruptedException {
 
         Thread.sleep(5000);
 
         if (webAction != null && webAction.getDriver() != null)
             webAction.closeBrowser();
 
-        Report.reportInfo("***** HA FINALIZADO LA PRUEBA******"
+        Report.reportInfo("***** TEST HAS FINISHED******"
                 .concat(testInfo.getFeatureName())
                 .concat("-")
                 .concat(testInfo.getScenarioName()));

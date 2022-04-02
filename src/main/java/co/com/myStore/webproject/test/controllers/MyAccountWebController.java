@@ -12,7 +12,7 @@ public class MyAccountWebController {
         this.webAction = webAction;
     }
 
-    public String obtenerNombreDeNuevoUsuario(){
+    public String getNewUserName(){
         String usuario = "";
         try{
             MyAccountPage myAccountPage = new MyAccountPage(webAction.getDriver());

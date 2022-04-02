@@ -9,24 +9,24 @@ import co.com.sofka.test.exceptions.WebActionsException;
 
 public class StartBrowserWebController {
     private WebAction webAction;
-    private String featue;
+    private String feature;
     private Browser browser;
 
     public void setWebAction(WebAction webAction) {
         this.webAction = webAction;
     }
 
-    public void setFeatue(String featue) {
-        this.featue = featue;
+    public void setFeature(String feature) {
+        this.feature = feature;
     }
 
     public void setBrowser(Browser browser) {
         this.browser = browser;
     }
 
-    public void abrirTiendaOnline(){
+    public void openStoreOnline(){
         try{
-            webAction.startWebApp(browser, Helper.getProperty(Dictionary.APP_URL_PROPERTY), featue);
+            webAction.startWebApp(browser, Helper.getProperty(Dictionary.APP_URL_PROPERTY), feature);
         } catch (WebActionsException e){
             Report.reportFailure("Ocurrio un error al intentar abrir la tienda online", e);
         }
