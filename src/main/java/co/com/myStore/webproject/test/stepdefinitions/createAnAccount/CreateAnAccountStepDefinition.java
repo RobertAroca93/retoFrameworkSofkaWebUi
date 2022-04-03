@@ -1,4 +1,4 @@
-package co.com.myStore.webproject.test.stepdefinitions;
+package co.com.myStore.webproject.test.stepdefinitions.createAnAccount;
 
 import co.com.myStore.webproject.test.controllers.CreateAnAccountWebController;
 import co.com.myStore.webproject.test.controllers.LoginPageController;
@@ -7,6 +7,7 @@ import co.com.myStore.webproject.test.controllers.openwebpage.StartBrowserWebCon
 import co.com.myStore.webproject.test.data.objects.TestInfo;
 import co.com.myStore.webproject.test.model.Customer;
 import co.com.myStore.webproject.test.helpers.Dictionary;
+import co.com.myStore.webproject.test.stepdefinitions.Setup;
 import co.com.sofka.test.actions.WebAction;
 import co.com.sofka.test.evidence.reports.Assert;
 import co.com.sofka.test.evidence.reports.Report;
@@ -18,7 +19,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
-public class CreateAnAccountStepDefinition extends Setup{
+public class CreateAnAccountStepDefinition extends Setup {
 
     private WebAction webAction;
     private Customer customer;

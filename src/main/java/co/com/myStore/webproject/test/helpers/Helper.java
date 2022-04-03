@@ -1,6 +1,7 @@
 package co.com.myStore.webproject.test.helpers;
 
 
+import co.com.myStore.webproject.test.model.ContactUsModel;
 import co.com.myStore.webproject.test.model.Customer;
 import co.com.sofka.test.evidence.reports.Report;
 
@@ -11,6 +12,9 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.Random;
+
+import static co.com.myStore.webproject.test.helpers.Dictionary.*;
+
 
 
 public class Helper {
@@ -43,7 +47,7 @@ public class Helper {
                 faker.name()
                         .username()
                         .concat(emailDomain)
-                        .replace(Dictionary.SPACE_STRING, Dictionary.EMPTY_STRING)
+                        .replace(SPACE_STRING, EMPTY_STRING)
         );
 
         customer.setFirstName(faker.name().firstName());
@@ -72,4 +76,25 @@ public class Helper {
 
         return customer;
     }
+    public static ContactUsModel fillFormContactUs(String emailDomain,String language, String country){
+
+        Faker faker =  Faker.instance(
+                new Locale(language, country),
+                new Random()
+        );
+
+        ContactUsModel contactUs = new ContactUsModel();
+        contactUs.setEmail_Adress(
+                faker.name()
+                        .username()
+                        .concat(emailDomain)
+                        .replace(SPACE_STRING,EMPTY_STRING));
+        contactUs.setSubject_Heading(SUBJECT_HEADING);
+        contactUs.setMessage(faker.music().instrument());
+
+        return contactUs;
+
+
+    }
+
 }

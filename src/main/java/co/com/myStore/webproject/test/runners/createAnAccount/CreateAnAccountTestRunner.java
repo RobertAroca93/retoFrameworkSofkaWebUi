@@ -1,4 +1,4 @@
-package co.com.myStore.webproject.test.runners;
+package co.com.myStore.webproject.test.runners.createAnAccount;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
