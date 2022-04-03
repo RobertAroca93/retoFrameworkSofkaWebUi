@@ -35,9 +35,9 @@ public class Helper {
         return properties.getProperty(property);
     }
 
-    public static Customer generateCustomer(String language, String country, String emailDomain){
+    public static Customer generateCustomer(String language, String country, String emailDomain) {
 
-        Faker faker =  Faker.instance(
+        Faker faker = Faker.instance(
                 new Locale(language, country),
                 new Random()
         );
@@ -62,9 +62,9 @@ public class Helper {
         customer.setPostalCode(faker.address().zipCode());
         customer.setMobilePhone(
                 String.valueOf(
-                        faker
-                                .number()
-                                .numberBetween(300000000, 399999999))
+                                faker
+                                        .number()
+                                        .numberBetween(300000000, 399999999))
                         .concat(
                                 String.valueOf(
                                         faker.number()
@@ -76,9 +76,10 @@ public class Helper {
 
         return customer;
     }
-    public static ContactUsModel fillFormContactUs(String emailDomain,String language, String country){
 
-        Faker faker =  Faker.instance(
+    public static ContactUsModel fillFormContactUs(String emailDomain, String language, String country) {
+
+        Faker faker = Faker.instance(
                 new Locale(language, country),
                 new Random()
         );
@@ -88,13 +89,26 @@ public class Helper {
                 faker.name()
                         .username()
                         .concat(emailDomain)
-                        .replace(SPACE_STRING,EMPTY_STRING));
+                        .replace(SPACE_STRING, EMPTY_STRING));
         contactUs.setSubject_Heading(SUBJECT_HEADING);
         contactUs.setMessage(faker.music().instrument());
 
         return contactUs;
 
-
     }
 
+    public static ContactUsModel fillFormContactUsFailed(String language, String country) {
+
+        Faker faker = Faker.instance(
+                new Locale(language, country),
+                new Random()
+        );
+
+        ContactUsModel contactUs = new ContactUsModel();
+        contactUs.setSubject_Heading(SUBJECT_HEADING);
+        contactUs.setMessage(faker.music().instrument());
+
+        return contactUs;
+
+    }
 }

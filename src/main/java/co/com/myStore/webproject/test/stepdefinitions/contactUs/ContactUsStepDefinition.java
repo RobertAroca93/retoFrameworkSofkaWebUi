@@ -15,7 +15,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static co.com.myStore.webproject.test.helpers.Dictionary.SEND_SUCCESSFULLY;
+import static co.com.myStore.webproject.test.helpers.Dictionary.*;
 
 public class ContactUsStepDefinition extends Setup {
     private WebAction webAction;
@@ -52,7 +52,7 @@ public class ContactUsStepDefinition extends Setup {
     }
     @Then("A successful delivery message should be displayed.")
     public void a_successful_delivery_message_should_be_displayed() {
-        Assert.Hard.thatString(confirmation).isEqualTo(SEND_SUCCESSFULLY);
+        Assert.Hard.thatString(confirmation).isEqualTo(MESSAGE_SEND_SUCCESSFULLY);
 
     }
     @After
@@ -67,6 +67,33 @@ public class ContactUsStepDefinition extends Setup {
                 .concat(testInfo.getFeatureName())
                 .concat("-")
                 .concat(testInfo.getScenarioName()));
+
+    }
+    @Given("I am in the contact us module")
+    public void i_am_in_the_contact_us_module() {
+        StartBrowserWebController startBrowserWebController = new StartBrowserWebController();
+        startBrowserWebController.setWebAction(webAction);
+        startBrowserWebController.setBrowser(browser());
+        startBrowserWebController.setFeature(testInfo.getFeatureName());
+        startBrowserWebController.openStoreOnline();
+
+    }
+    @When("I did not fill out a mandatory field")
+    public void i_did_not_fill_out_a_mandatory_field() {
+        GoToContatcUs goToContatcUs = new GoToContatcUs();
+        goToContatcUs.setWebAction(webAction);
+        goToContatcUs.openContactUs();
+
+        ContactUsWebController contactUsWebController = new ContactUsWebController();
+        contactUsWebController.setWebAction(webAction);
+        contactUsWebController.fillFormContactUsFailed();
+        confirmation =contactUsWebController.text;
+
+    }
+    @Then("an error message should be displayed on the screen")
+    public void an_error_message_should_be_displayed_on_the_screen() {
+        Assert.Hard.thatString(confirmation).isEqualTo(MESSAGE_SEND_FAILED);
+
 
     }
 

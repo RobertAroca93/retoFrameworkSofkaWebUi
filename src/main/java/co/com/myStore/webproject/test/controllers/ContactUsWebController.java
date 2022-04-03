@@ -29,12 +29,26 @@ public class ContactUsWebController {
             webAction.click(contactUsPage.getSend_Button(),4,true);
             text =webAction.getText(contactUsPage.getMessage_Send_Successful(),4,true);
 
-
-
         } catch (WebActionsException e) {
             Report.reportFailure("an error has occurred filling the form", e);
         }
     }
+    public void fillFormContactUsFailed(){
+        try {
+            contactUs = fillFormContactUs(EMAIL_DOMAIN,SPANISH_CODE_LANGUAGE,COUNTRY_CODE);
+            ContactUsPage contactUsPage = new ContactUsPage(webAction.getDriver());
+            webAction.selectByText(contactUsPage.getSubject_Heading(), contactUs.getSubject_Heading(), 4, true);
+            webAction.sendText(contactUsPage.getMessage(),contactUs.getMessage(),4,true);
+            webAction.click(contactUsPage.getSend_Button(),4,true);
+            text= webAction.getText(contactUsPage.getMessage_Send_Failed(),4,true);
+
+        }catch (WebActionsException e){
+            Report.reportFailure("an error has occurred filling the form", e);
+
+        }
+
+    }
+
 }
 
 

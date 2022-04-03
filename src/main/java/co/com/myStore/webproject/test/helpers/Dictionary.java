@@ -8,7 +8,8 @@ public class Dictionary {
     public static final String BANKWIRE_SUCCESSFUL = "Your order on My Store is complete.";
     public static final String CHECKPAYMENT_SUCCESSFUL="Your order on My Store is complete.";
     public static final String SUBJECT_HEADING = "Webmaster";
-    public static final String SEND_SUCCESSFULLY ="Your message has been successfully sent to our team.";
+    public static final String MESSAGE_SEND_SUCCESSFULLY ="Your message has been successfully sent to our team.";
+    public static final String MESSAGE_SEND_FAILED="Invalid email address.";
 
     public static final String SPANISH_CODE_LANGUAGE = "es";
     public static final String COUNTRY_CODE = "CO";

@@ -32,6 +32,10 @@ public class ContactUsPage {
     @FindBy(xpath = "//*[@id=\"center_column\"]/p")
     WebElement Message_Send_Successful;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id=\"center_column\"]/div/ol/li")
+    WebElement Message_Send_Failed;
+
 
     public WebElement getSubject_Heading() {
         return Subject_Heading;
@@ -52,6 +56,12 @@ public class ContactUsPage {
     public WebElement getMessage_Send_Successful() {
         return Message_Send_Successful;
     }
+
+    public WebElement getMessage_Send_Failed() {
+        return Message_Send_Failed;
+    }
+
+
     public ContactUsPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
     }

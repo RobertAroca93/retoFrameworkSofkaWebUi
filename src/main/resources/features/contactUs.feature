@@ -12,3 +12,10 @@ Feature: contact Us
   Given I am in the contact us section
     When fill in the required fields correctly
     Then A successful delivery message should be displayed.
+
+    @ScenarioName:contactUsFailed
+    Scenario:ContactUs Failed
+      Given I am in the contact us module
+      When I did not fill out a mandatory field
+      Then an error message should be displayed on the screen
+
