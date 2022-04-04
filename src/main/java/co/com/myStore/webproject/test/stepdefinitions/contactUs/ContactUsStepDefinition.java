@@ -1,7 +1,7 @@
 package co.com.myStore.webproject.test.stepdefinitions.contactUs;
 
-import co.com.myStore.webproject.test.controllers.ContactUsWebController;
-import co.com.myStore.webproject.test.controllers.openwebpage.GoToContatcUs;
+import co.com.myStore.webproject.test.controllers.contatcUs.ContactUsWebController;
+import co.com.myStore.webproject.test.controllers.openwebpage.GoToContatcUsWebController;
 import co.com.myStore.webproject.test.controllers.openwebpage.StartBrowserWebController;
 import co.com.myStore.webproject.test.data.objects.TestInfo;
 import co.com.myStore.webproject.test.stepdefinitions.Setup;
@@ -19,7 +19,7 @@ import static co.com.myStore.webproject.test.helpers.Dictionary.*;
 
 public class ContactUsStepDefinition extends Setup {
     private WebAction webAction;
-    public String confirmation;
+    public String confirmationMessage;
 
     @Before
     public void setup(Scenario scenario) {
@@ -40,19 +40,19 @@ public class ContactUsStepDefinition extends Setup {
     }
     @When("fill in the required fields correctly")
     public void fill_in_the_required_fields_correctly() {
-        GoToContatcUs goToContatcUs = new GoToContatcUs();
+        GoToContatcUsWebController goToContatcUs = new GoToContatcUsWebController();
         goToContatcUs.setWebAction(webAction);
         goToContatcUs.openContactUs();
 
         ContactUsWebController contactUsWebController = new ContactUsWebController();
         contactUsWebController.setWebAction(webAction);
         contactUsWebController.fillContactUs();
-        confirmation =contactUsWebController.text;
+        confirmationMessage =contactUsWebController.confirmation;
 
     }
     @Then("A successful delivery message should be displayed.")
     public void a_successful_delivery_message_should_be_displayed() {
-        Assert.Hard.thatString(confirmation).isEqualTo(MESSAGE_SEND_SUCCESSFULLY);
+        Assert.Hard.thatString(confirmationMessage).isEqualTo(MESSAGE_SEND_SUCCESSFULLY);
 
     }
     @After
@@ -80,19 +80,19 @@ public class ContactUsStepDefinition extends Setup {
     }
     @When("I did not fill out a mandatory field")
     public void i_did_not_fill_out_a_mandatory_field() {
-        GoToContatcUs goToContatcUs = new GoToContatcUs();
+        GoToContatcUsWebController goToContatcUs = new GoToContatcUsWebController();
         goToContatcUs.setWebAction(webAction);
         goToContatcUs.openContactUs();
 
         ContactUsWebController contactUsWebController = new ContactUsWebController();
         contactUsWebController.setWebAction(webAction);
         contactUsWebController.fillFormContactUsFailed();
-        confirmation =contactUsWebController.text;
+        confirmationMessage =contactUsWebController.confirmation;
 
     }
     @Then("an error message should be displayed on the screen")
     public void an_error_message_should_be_displayed_on_the_screen() {
-        Assert.Hard.thatString(confirmation).isEqualTo(MESSAGE_SEND_FAILED);
+        Assert.Hard.thatString(confirmationMessage).isEqualTo(MESSAGE_SEND_FAILED);
 
 
     }

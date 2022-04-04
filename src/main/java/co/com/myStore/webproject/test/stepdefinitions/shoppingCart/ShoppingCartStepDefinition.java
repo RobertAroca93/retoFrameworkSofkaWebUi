@@ -1,8 +1,8 @@
 package co.com.myStore.webproject.test.stepdefinitions.shoppingCart;
 
-import co.com.myStore.webproject.test.controllers.CreateAnAccountWebController;
-import co.com.myStore.webproject.test.controllers.LoginPageController;
-import co.com.myStore.webproject.test.controllers.ShoppingCartWebController;
+import co.com.myStore.webproject.test.controllers.createAnAccount.CreateAnAccountWebController;
+import co.com.myStore.webproject.test.controllers.login.LoginPageController;
+import co.com.myStore.webproject.test.controllers.shoppingCart.ShoppingCartWebController;
 import co.com.myStore.webproject.test.controllers.openwebpage.StartBrowserWebController;
 import co.com.myStore.webproject.test.data.objects.TestInfo;
 import co.com.myStore.webproject.test.model.Customer;
@@ -61,7 +61,7 @@ public class ShoppingCartStepDefinition extends Setup {
         ShoppingCartWebController shoppingCartWebController = new ShoppingCartWebController();
         shoppingCartWebController.setWebAction(webAction);
         shoppingCartWebController.shoppingCartBankWire();
-        message = shoppingCartWebController.text;
+        message = shoppingCartWebController.messageConfirmation;
 
     }
 
@@ -114,7 +114,7 @@ public class ShoppingCartStepDefinition extends Setup {
         ShoppingCartWebController shoppingCartWebController = new ShoppingCartWebController();
         shoppingCartWebController.setWebAction(webAction);
         shoppingCartWebController.shoppingCartBankWire();
-        message = shoppingCartWebController.text;
+        message = shoppingCartWebController.messageConfirmation;
 
     }
 
@@ -124,5 +124,6 @@ public class ShoppingCartStepDefinition extends Setup {
 
 
     }
+
 
 }

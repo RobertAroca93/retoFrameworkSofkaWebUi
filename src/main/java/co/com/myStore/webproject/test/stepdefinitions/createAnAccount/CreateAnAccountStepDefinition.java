@@ -1,8 +1,8 @@
 package co.com.myStore.webproject.test.stepdefinitions.createAnAccount;
 
-import co.com.myStore.webproject.test.controllers.CreateAnAccountWebController;
-import co.com.myStore.webproject.test.controllers.LoginPageController;
-import co.com.myStore.webproject.test.controllers.MyAccountWebController;
+import co.com.myStore.webproject.test.controllers.createAnAccount.CreateAnAccountWebController;
+import co.com.myStore.webproject.test.controllers.login.LoginPageController;
+import co.com.myStore.webproject.test.controllers.myAccount.MyAccountWebController;
 import co.com.myStore.webproject.test.controllers.openwebpage.StartBrowserWebController;
 import co.com.myStore.webproject.test.data.objects.TestInfo;
 import co.com.myStore.webproject.test.model.Customer;

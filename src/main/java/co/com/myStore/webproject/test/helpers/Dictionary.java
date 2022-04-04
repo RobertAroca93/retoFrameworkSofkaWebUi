@@ -10,17 +10,13 @@ public class Dictionary {
     public static final String SUBJECT_HEADING = "Webmaster";
     public static final String MESSAGE_SEND_SUCCESSFULLY ="Your message has been successfully sent to our team.";
     public static final String MESSAGE_SEND_FAILED="Invalid email address.";
-
     public static final String SPANISH_CODE_LANGUAGE = "es";
     public static final String COUNTRY_CODE = "CO";
-
     public static final String EMAIL_DOMAIN = "@sofmail.com";
-
     public static final String FILE_EVIDENCE_PROPERTY = "files.evidence";
     public static final String APP_URL_PROPERTY = "app.url";
 
     private static final String PROPERTIES_FILE_BASE_PATH = "src/main/resources/properties/";
-
     public static final String CONFIGURATION_PROPERTIES_FILE = System.getProperty("user.dir") +
             "/" +
             PROPERTIES_FILE_BASE_PATH + "configuration.properties";
